@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { ModalService } from 'ng2-modal-dialog/modal.module';
+
+// The AppModule from the application src
+import { AppModule } from './app.module';
+
 
 @Component({
   selector: '[app-root]',
@@ -6,6 +11,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  showDialog = false;
+  
+  constructor(private modalService: ModalService){
+
+  }
+
+  openLoginModal(userCreds): void {
+  	// Service callback function to create the modal with an object passed as a parameter
+   // this.modalService.create(AppModule, LoginModalComponent, {userCreds});
+  }
+
   title = 'app';
   private jobtitle ="Software Engineer";
   job:object;
@@ -52,4 +69,24 @@ export class AppComponent {
       }
   }
 
+  //forms
+  model:JobTitle = new JobTitle();
+  Submitvalues(){
+    console.log(this.model)
+  }
+  departments = [
+    {id:1 , Name:"IT Department"},
+    {id:2 , Name:"ACC Department"},
+    {id:3 , Name:"HR Department"},
+  ]
+
+}
+
+
+export class JobTitle{
+    id:number;
+    title:string;
+    position:string;
+    isfulltime:boolean;
+    department:string;
 }

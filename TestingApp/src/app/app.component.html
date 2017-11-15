@@ -7,6 +7,51 @@
 </header>
 
 <section>
+  <button (click)="showDialog = !showDialog" class="btn">Open</button>
+  
+  <app-dialog [(visible)]="showDialog">
+    <h1>Hello World</h1>
+    <button (click)="showDialog = !showDialog" class="btn">Close</button>
+  </app-dialog>
+</section>
+
+
+<section>
+  <h2>forms</h2>
+
+  <form action="" #f="ngForm">
+      <div>
+        <input name="title" type="text" [(ngModel)] = "model.title">
+      </div>
+      <div>
+        <input name="position" type="text" [(ngModel)] = "model.position">
+      </div>
+      <div>
+        <input type="checkbox" name="isfulltime" [(ngModel)] = "model.isfulltime"> Is FullTime
+      </div>
+      <div>
+        <select name="departments" id="dept" [(ngModel)] = "model.department">
+            <option  *ngFor="let x of departments">{{x.Name}}</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit" (click) = "Submitvalues()"> Send Data</button>
+      </div>
+
+  </form>
+
+  {{model |json}}
+  <ul>
+    <li>{{"Title:" + model.title }}</li>
+    <li>{{"Position:" + model.position}}</li>
+    <li>{{"isfulltime:" + model.isfulltime}}</li>
+    isfulltime
+  </ul>
+</section>
+
+
+
+<section>
     <h3>Angular 5 is here already! what shell we do ?</h3>
     <ul>
       <li>{{job?.title}}1</li>
