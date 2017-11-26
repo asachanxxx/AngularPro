@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalService } from 'ng2-modal-dialog/modal.module';
+import {ModalService2} from './ModelService/index';
+import './ModelService/app.less';
+import './ModelService/modal.less';
 
 // The AppModule from the application src
 import { AppModule } from './app.module';
@@ -13,10 +16,22 @@ import { AppModule } from './app.module';
 export class AppComponent {
 
   showDialog = false;
-  
-  constructor(private modalService: ModalService){
+  private bodyText: string ='This text can be updated in modal 1';
+
+  constructor(private modalService: ModalService , private mservice:ModalService2
+    
+  ){
 
   }
+
+  openModal(id: string){
+    this.mservice.open(id);
+  }
+
+closeModal(id: string){
+    this.mservice.close(id);
+  }
+
 
   openLoginModal(userCreds): void {
   	// Service callback function to create the modal with an object passed as a parameter
