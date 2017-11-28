@@ -1,0 +1,52 @@
+<section class="container">
+<div class="row">
+  <div class="col-md-6">
+<form novalidate [formGroup] = "myform">
+  <fieldset formGroupName="name">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="firstName" 
+             required>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="lastName" 
+             required>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email"
+           class="form-control"
+           formControlName="email">
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password"
+           class="form-control"
+           formControlName="password">
+  </div>
+
+  <div class="form-group">
+    <label>Language</label>
+    <select class="form-control" formControlName="language">
+      <option value="">Please select a language</option>
+      <option *ngFor="let item of langs" [value]="item">{{item}}</option>
+    </select>
+  </div>
+</form>
+</div>
+</div>
+
+</section>
+<section>
+  <h3>Output</h3>
+  <pre>{{myform.value | json}}</pre>
+</section>
